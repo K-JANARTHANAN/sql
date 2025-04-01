@@ -1,0 +1,53 @@
+create table Employees(
+emp_ID int primary key auto_increment ,
+emp_name varchar(20), 
+salary decimal(10,3),
+date_of_join date,
+location varchar(40),
+Designation varchar(30)
+);
+insert into Employees(emp_name,salary,date_of_join,location,Designation) values("Jana",343545,"2025-04-3","chennai","Developer");
+ insert into Employees(emp_name,salary,date_of_join,location,Designation) values("jack",320000,"2025-11-3","mumbai","tester");
+ insert into Employees(emp_name,salary,date_of_join,location,Designation) values("gowth",10000,"2025-12-25","delhi","Developer");
+ insert into Employees(emp_name,salary,date_of_join,location,Designation) values("dinesh",40000,"2020-2-29","kolkatta","HR"),("velu",4000,"2025-04-3","magendra city","driver");
+ select * from Employees;
+ -- update a location of emp 2
+ update Employees set location="INDIA" where emp_ID=2;
+ 
+--  count by location
+ select location ,count(*) as count_no from Employees group by location;
+ 
+--  update a salary of emp 3;
+ update Employees set salary=6000 where emp_ID=3;
+ 
+--   delete a emp 4
+  delete from Employees where emp_ID=4;
+   
+--   add a new column 
+   alter table Employees add column email varchar(20);
+   
+   select sum(salary) from Employees;
+   select avg(salary) as average from Employees ;
+   select max(salary) as high from Employees;
+   
+   -- drop a column from a table
+   alter table Employees drop column Designation;
+   
+   
+   
+  
+  
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
