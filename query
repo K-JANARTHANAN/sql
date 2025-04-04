@@ -37,8 +37,51 @@ insert into Employees(emp_name,salary,date_of_join,location,Designation) values(
    
   
   
-  
-  
+  trigger
+
+
+
+
+create table E1(
+sno int primarY key auto_increment,
+name varchar(39),
+salary decimal(9,3)
+);
+
+ insert into E1(name,salary) values("AAA",20000);
+ insert into E1(name,salary) values("AAA",50000),("BBB",30000),("CCC",40000);
+ update E1 set name="DDD" where sno=2;
+	 select * from E1;
+ 
+ 
+create table Audit_log2(
+sno int primarY key auto_increment,
+name varchar(39),
+old_salary decimal(9,3),
+new_salary decimal(9,3)
+)
+
+DELIMITER $$
+create trigger trigger1
+after update on E1
+for each row
+begin
+if old.salary<> new.salary then
+insert into Audit_log2(sno,name,old_salary,new_salary) value(old.sno,old.name,old.salary,new.salary);
+end if;
+end $$
+
+update E1 set salary =18672 where sno=2;
+update E1 set salary =70000 where sno=1;
+update E1 set salary =70000 where sno=1;
+select * from E1;
+select * from Audit_log2;
+
+
+
+
+
+ 
  
  
  
